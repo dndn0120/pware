@@ -1,2 +1,0 @@
-# pware
-personal ware
