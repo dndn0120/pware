@@ -10,13 +10,11 @@ class MainController extends Controller
 {
     public function index(Request $request, Response $response, array $args)
     {
-        $this->renderer->assign([
-                'test' => '메인페이지입니다.',
-        ]);
-        
-        $response->getBody()->write($this->renderer->display('index.tpl'));
-        
+        if($_SESSION['user_id']) {
+            $response->getBody()->write($this->renderer->display('index.tpl'));
+        } else {
+            $response->getBody()->write($this->renderer->display('login/index.tpl'));
+        }
         return $response;
     }
-    
 }
